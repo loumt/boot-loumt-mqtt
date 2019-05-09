@@ -1,0 +1,14 @@
+server:
+  port: 8050
+
+
+
+spring:
+  mqtt:
+    username:
+    password:
+    url: tcp://192.168.11.101:1883
+    topics: test/java
+    completionTimeout: 3000
+    client:
+      id: server_c23li34e32s2324
