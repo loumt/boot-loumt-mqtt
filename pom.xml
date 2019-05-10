@@ -11,6 +11,7 @@
         <module>subscribe</module>
         <module>publish</module>
     </modules>
+    <url>http://maven.apache.org</url>
     <packaging>pom</packaging>
 
     <parent>

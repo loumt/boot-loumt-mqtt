@@ -35,7 +35,7 @@ import java.util.stream.Stream;
 @Slf4j
 @Configuration
 @IntegrationComponentScan
-public class MQTTConfiguration {
+public class MQTTSubConfiguration {
     @Value("${spring.mqtt.username}")
     private String username;
 
@@ -53,6 +53,10 @@ public class MQTTConfiguration {
 
     @Value("${spring.mqtt.completionTimeout}")
     private int completionTimeout;
+
+    @Value("${spring.mqtt.default.qos}")
+    private int defaultQoS;
+
 
     private static final Integer MAX_IN_FLIGHT = 100000000;
 
@@ -108,7 +112,7 @@ public class MQTTConfiguration {
         MqttPahoMessageDrivenChannelAdapter adapter = new MqttPahoMessageDrivenChannelAdapter(clientId, mqttClientFactory(), inboundTopics);
         adapter.setCompletionTimeout(completionTimeout);
         adapter.setConverter(new DefaultPahoMessageConverter());
-        adapter.setQos(1);
+        adapter.setQos(defaultQoS);
         adapter.setOutputChannel(mqttInputChannel());
         return adapter;
     }

@@ -12,3 +12,5 @@ spring:
     completionTimeout: 3000
     client:
       id: client_c23li34e32s2324
+    default:
+      qos: 2

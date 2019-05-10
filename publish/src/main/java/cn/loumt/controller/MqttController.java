@@ -38,7 +38,7 @@ public class MqttController {
     @GetMapping("/send")
     public JSONObject sendMqtt(@RequestParam String sendData){
         JSONObject resultJson = new JSONObject();
-        mqttGateway.sendToMqtt(sendData, "test/java");
+        mqttGateway.sendToMqtt(sendData);
         resultJson.put("send",sendData);
         resultJson.put("success",true);
         return resultJson;

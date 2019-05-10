@@ -29,7 +29,7 @@ import org.springframework.messaging.MessageHandler;
  */
 @Configuration
 @IntegrationComponentScan
-public class MQTTConfiguration {
+public class MQTTPubConfiguration {
 
     @Value("${spring.mqtt.username}")
     private String username;
@@ -48,6 +48,9 @@ public class MQTTConfiguration {
 
     @Value("${spring.mqtt.completionTimeout}")
     private int completionTimeout;
+
+    @Value("${spring.mqtt.default.qos}")
+    private int defaultQos;
 
     private static final Integer MAX_IN_FLIGHT = 100000000;
 
@@ -99,6 +102,7 @@ public class MQTTConfiguration {
         //clientId使用随机数产生
         MqttPahoMessageHandler messageHandler = new MqttPahoMessageHandler(clientId, mqttClientFactory());
         messageHandler.setAsync(true);
+        messageHandler.setDefaultQos(defaultQos);
         messageHandler.setDefaultTopic(topics);
         //信息是否保留,若为true,该信息保存在服务器,每个订阅该频道的客户端都会收到该信息
         messageHandler.setDefaultRetained(false);
