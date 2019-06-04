@@ -8,7 +8,7 @@ spring:
     username:
     password:
     url: tcp://192.168.11.101:1883
-    topics: test/java
+    topics: test/java2
     completionTimeout: 3000
     client:
       id: client_c23li34e32s2324

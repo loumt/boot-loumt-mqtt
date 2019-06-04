@@ -7,10 +7,9 @@ import cn.loumt.service.MqttGateway;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * USED TO:
@@ -40,6 +39,15 @@ public class MqttController {
         JSONObject resultJson = new JSONObject();
         mqttGateway.sendToMqtt(sendData);
         resultJson.put("send",sendData);
+        resultJson.put("success",true);
+        return resultJson;
+    }
+
+    @PostMapping("/save")
+    public JSONObject saveMqttMsg(@RequestBody String sendData){
+        JSONObject resultJson = new JSONObject();
+        System.out.println("sendData: " + sendData);
+        resultJson.put("save",sendData);
         resultJson.put("success",true);
         return resultJson;
     }

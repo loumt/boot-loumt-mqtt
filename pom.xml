@@ -10,6 +10,7 @@
     <modules>
         <module>subscribe</module>
         <module>publish</module>
+        <module>mqtt-common</module>
     </modules>
     <url>http://maven.apache.org</url>
     <packaging>pom</packaging>
